@@ -1,0 +1,108 @@
+import type { Company } from "./type";
+
+export const MOCK_COMPANY_TREE: Company[] = [
+  {
+    id: "group-1",
+    name: "Tập đoàn Comforty",
+    code: "CFT-GROUP",
+    type: "group",
+    status: "active",
+    children: [
+      {
+        id: "company-hcm",
+        name: "Comforty TP. Hồ Chí Minh",
+        code: "CFT-HCM",
+        type: "company",
+        status: "active",
+        phone: "028 3822 0000",
+        children: [
+          {
+            id: "branch-q1",
+            name: "Comforty Quận 1",
+            code: "CFT-HCM-Q1",
+            type: "branch",
+            status: "active",
+            address: "123 Lê Lợi, Phường Bến Nghé, Q.1",
+            phone: "028 3822 1234",
+            thumbnail: "https://placehold.co/400x200/e2e8f0/64748b",
+            revenue: 128_500_000,
+            orderCount: 84,
+            staffCount: 12,
+            openTime: "08:00",
+            closeTime: "21:00",
+          },
+          {
+            id: "branch-q3",
+            name: "Comforty Quận 3",
+            code: "CFT-HCM-Q3",
+            type: "branch",
+            status: "active",
+            address: "456 Võ Văn Tần, Phường 5, Q.3",
+            phone: "028 3930 5678",
+            thumbnail: "https://placehold.co/400x200/e2e8f0/64748b",
+            revenue: 95_200_000,
+            orderCount: 61,
+            staffCount: 8,
+            openTime: "08:30",
+            closeTime: "21:00",
+          },
+        ],
+      },
+      {
+        id: "company-hn",
+        name: "Comforty Hà Nội",
+        code: "CFT-HN",
+        type: "company",
+        status: "active",
+        phone: "024 3826 0000",
+        children: [
+          {
+            id: "branch-hk",
+            name: "Comforty Hoàn Kiếm",
+            code: "CFT-HN-HK",
+            type: "branch",
+            status: "active",
+            address: "78 Đinh Tiên Hoàng, Phường Lý Thái Tổ",
+            phone: "024 3826 9900",
+            thumbnail: "https://placehold.co/400x200/e2e8f0/64748b",
+            revenue: 67_800_000,
+            orderCount: 42,
+            staffCount: 6,
+            openTime: "09:00",
+            closeTime: "20:30",
+          },
+        ],
+      },
+      {
+        id: "company-dn",
+        name: "Comforty Đà Nẵng",
+        code: "CFT-DN",
+        type: "company",
+        status: "inactive",
+        phone: "0236 3655 000",
+        children: [
+          {
+            id: "branch-dn-1",
+            name: "Comforty Đà Nẵng",
+            code: "CFT-DN-NVL",
+            type: "branch",
+            status: "inactive",
+            address: "210 Nguyễn Văn Linh, Phường Thạc Gián",
+            phone: "0236 3655 111",
+            thumbnail: "https://placehold.co/400x200/e2e8f0/64748b",
+            revenue: 0,
+            orderCount: 0,
+            staffCount: 5,
+            openTime: "09:00",
+            closeTime: "21:00",
+          },
+        ],
+      },
+    ],
+  },
+];
+
+export const MOCK_BRANCHES: Company[] = MOCK_COMPANY_TREE.flatMap(
+  (group) =>
+    group.children?.flatMap((company) => company.children ?? []) ?? [],
+);
