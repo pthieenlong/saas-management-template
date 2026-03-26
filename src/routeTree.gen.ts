@@ -10,7 +10,6 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as UserPermissionsRouteImport } from './routes/user-permissions'
-import { Route as StaffRouteImport } from './routes/staff'
 import { Route as SettingsRouteImport } from './routes/settings'
 import { Route as ReportsRouteImport } from './routes/reports'
 import { Route as ProductsRouteImport } from './routes/products'
@@ -18,19 +17,17 @@ import { Route as OrdersRouteImport } from './routes/orders'
 import { Route as InventoryRouteImport } from './routes/inventory'
 import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as CategoriesRouteImport } from './routes/categories'
+import { Route as StaffRouteRouteImport } from './routes/staff/route'
 import { Route as CompaniesRouteRouteImport } from './routes/companies/route'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as StaffIndexRouteImport } from './routes/staff/index'
 import { Route as CompaniesIndexRouteImport } from './routes/companies/index'
+import { Route as StaffStaffIdRouteImport } from './routes/staff/$staffId'
 import { Route as CompaniesDashboardRouteImport } from './routes/companies/dashboard'
 
 const UserPermissionsRoute = UserPermissionsRouteImport.update({
   id: '/user-permissions',
   path: '/user-permissions',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const StaffRoute = StaffRouteImport.update({
-  id: '/staff',
-  path: '/staff',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SettingsRoute = SettingsRouteImport.update({
@@ -68,6 +65,11 @@ const CategoriesRoute = CategoriesRouteImport.update({
   path: '/categories',
   getParentRoute: () => rootRouteImport,
 } as any)
+const StaffRouteRoute = StaffRouteRouteImport.update({
+  id: '/staff',
+  path: '/staff',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const CompaniesRouteRoute = CompaniesRouteRouteImport.update({
   id: '/companies',
   path: '/companies',
@@ -78,10 +80,20 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const StaffIndexRoute = StaffIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => StaffRouteRoute,
+} as any)
 const CompaniesIndexRoute = CompaniesIndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => CompaniesRouteRoute,
+} as any)
+const StaffStaffIdRoute = StaffStaffIdRouteImport.update({
+  id: '/$staffId',
+  path: '/$staffId',
+  getParentRoute: () => StaffRouteRoute,
 } as any)
 const CompaniesDashboardRoute = CompaniesDashboardRouteImport.update({
   id: '/dashboard',
@@ -92,6 +104,7 @@ const CompaniesDashboardRoute = CompaniesDashboardRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/companies': typeof CompaniesRouteRouteWithChildren
+  '/staff': typeof StaffRouteRouteWithChildren
   '/categories': typeof CategoriesRoute
   '/dashboard': typeof DashboardRoute
   '/inventory': typeof InventoryRoute
@@ -99,10 +112,11 @@ export interface FileRoutesByFullPath {
   '/products': typeof ProductsRoute
   '/reports': typeof ReportsRoute
   '/settings': typeof SettingsRoute
-  '/staff': typeof StaffRoute
   '/user-permissions': typeof UserPermissionsRoute
   '/companies/dashboard': typeof CompaniesDashboardRoute
+  '/staff/$staffId': typeof StaffStaffIdRoute
   '/companies/': typeof CompaniesIndexRoute
+  '/staff/': typeof StaffIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -113,15 +127,17 @@ export interface FileRoutesByTo {
   '/products': typeof ProductsRoute
   '/reports': typeof ReportsRoute
   '/settings': typeof SettingsRoute
-  '/staff': typeof StaffRoute
   '/user-permissions': typeof UserPermissionsRoute
   '/companies/dashboard': typeof CompaniesDashboardRoute
+  '/staff/$staffId': typeof StaffStaffIdRoute
   '/companies': typeof CompaniesIndexRoute
+  '/staff': typeof StaffIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/companies': typeof CompaniesRouteRouteWithChildren
+  '/staff': typeof StaffRouteRouteWithChildren
   '/categories': typeof CategoriesRoute
   '/dashboard': typeof DashboardRoute
   '/inventory': typeof InventoryRoute
@@ -129,16 +145,18 @@ export interface FileRoutesById {
   '/products': typeof ProductsRoute
   '/reports': typeof ReportsRoute
   '/settings': typeof SettingsRoute
-  '/staff': typeof StaffRoute
   '/user-permissions': typeof UserPermissionsRoute
   '/companies/dashboard': typeof CompaniesDashboardRoute
+  '/staff/$staffId': typeof StaffStaffIdRoute
   '/companies/': typeof CompaniesIndexRoute
+  '/staff/': typeof StaffIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
     | '/companies'
+    | '/staff'
     | '/categories'
     | '/dashboard'
     | '/inventory'
@@ -146,10 +164,11 @@ export interface FileRouteTypes {
     | '/products'
     | '/reports'
     | '/settings'
-    | '/staff'
     | '/user-permissions'
     | '/companies/dashboard'
+    | '/staff/$staffId'
     | '/companies/'
+    | '/staff/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -160,14 +179,16 @@ export interface FileRouteTypes {
     | '/products'
     | '/reports'
     | '/settings'
-    | '/staff'
     | '/user-permissions'
     | '/companies/dashboard'
+    | '/staff/$staffId'
     | '/companies'
+    | '/staff'
   id:
     | '__root__'
     | '/'
     | '/companies'
+    | '/staff'
     | '/categories'
     | '/dashboard'
     | '/inventory'
@@ -175,15 +196,17 @@ export interface FileRouteTypes {
     | '/products'
     | '/reports'
     | '/settings'
-    | '/staff'
     | '/user-permissions'
     | '/companies/dashboard'
+    | '/staff/$staffId'
     | '/companies/'
+    | '/staff/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   CompaniesRouteRoute: typeof CompaniesRouteRouteWithChildren
+  StaffRouteRoute: typeof StaffRouteRouteWithChildren
   CategoriesRoute: typeof CategoriesRoute
   DashboardRoute: typeof DashboardRoute
   InventoryRoute: typeof InventoryRoute
@@ -191,7 +214,6 @@ export interface RootRouteChildren {
   ProductsRoute: typeof ProductsRoute
   ReportsRoute: typeof ReportsRoute
   SettingsRoute: typeof SettingsRoute
-  StaffRoute: typeof StaffRoute
   UserPermissionsRoute: typeof UserPermissionsRoute
 }
 
@@ -202,13 +224,6 @@ declare module '@tanstack/react-router' {
       path: '/user-permissions'
       fullPath: '/user-permissions'
       preLoaderRoute: typeof UserPermissionsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/staff': {
-      id: '/staff'
-      path: '/staff'
-      fullPath: '/staff'
-      preLoaderRoute: typeof StaffRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/settings': {
@@ -260,6 +275,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CategoriesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/staff': {
+      id: '/staff'
+      path: '/staff'
+      fullPath: '/staff'
+      preLoaderRoute: typeof StaffRouteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/companies': {
       id: '/companies'
       path: '/companies'
@@ -274,12 +296,26 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/staff/': {
+      id: '/staff/'
+      path: '/'
+      fullPath: '/staff/'
+      preLoaderRoute: typeof StaffIndexRouteImport
+      parentRoute: typeof StaffRouteRoute
+    }
     '/companies/': {
       id: '/companies/'
       path: '/'
       fullPath: '/companies/'
       preLoaderRoute: typeof CompaniesIndexRouteImport
       parentRoute: typeof CompaniesRouteRoute
+    }
+    '/staff/$staffId': {
+      id: '/staff/$staffId'
+      path: '/$staffId'
+      fullPath: '/staff/$staffId'
+      preLoaderRoute: typeof StaffStaffIdRouteImport
+      parentRoute: typeof StaffRouteRoute
     }
     '/companies/dashboard': {
       id: '/companies/dashboard'
@@ -305,9 +341,24 @@ const CompaniesRouteRouteWithChildren = CompaniesRouteRoute._addFileChildren(
   CompaniesRouteRouteChildren,
 )
 
+interface StaffRouteRouteChildren {
+  StaffStaffIdRoute: typeof StaffStaffIdRoute
+  StaffIndexRoute: typeof StaffIndexRoute
+}
+
+const StaffRouteRouteChildren: StaffRouteRouteChildren = {
+  StaffStaffIdRoute: StaffStaffIdRoute,
+  StaffIndexRoute: StaffIndexRoute,
+}
+
+const StaffRouteRouteWithChildren = StaffRouteRoute._addFileChildren(
+  StaffRouteRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   CompaniesRouteRoute: CompaniesRouteRouteWithChildren,
+  StaffRouteRoute: StaffRouteRouteWithChildren,
   CategoriesRoute: CategoriesRoute,
   DashboardRoute: DashboardRoute,
   InventoryRoute: InventoryRoute,
@@ -315,7 +366,6 @@ const rootRouteChildren: RootRouteChildren = {
   ProductsRoute: ProductsRoute,
   ReportsRoute: ReportsRoute,
   SettingsRoute: SettingsRoute,
-  StaffRoute: StaffRoute,
   UserPermissionsRoute: UserPermissionsRoute,
 }
 export const routeTree = rootRouteImport

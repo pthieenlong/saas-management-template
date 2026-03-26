@@ -13,9 +13,9 @@ export function SidebarItem({ icon: Icon, label, isActive, collapsed, onClick }:
   return (
     <Flex
       align="center"
-      justify={collapsed ? "center" : "flex-start"}
+      justify="flex-start"
       gap={3}
-      px={collapsed ? 0 : 3}
+      px={3}
       py={2}
       borderRadius="md"
       cursor="pointer"
@@ -23,16 +23,22 @@ export function SidebarItem({ icon: Icon, label, isActive, collapsed, onClick }:
       bg={isActive ? "colorPalette.subtle" : "transparent"}
       color={isActive ? "colorPalette.fg" : "fg.muted"}
       _hover={{ bg: "bg.subtle", color: "fg" }}
-      transition="all 0.15s"
+      transition="background 0.15s, color 0.15s"
       onClick={onClick}
       title={collapsed ? label : undefined}
     >
       <Box as={Icon} boxSize={4} flexShrink={0} />
-      {!collapsed && (
-        <Text fontSize="sm" fontWeight={isActive ? "semibold" : "medium"}>
-          {label}
-        </Text>
-      )}
+      <Text
+        fontSize="sm"
+        fontWeight={isActive ? "semibold" : "medium"}
+        opacity={collapsed ? 0 : 1}
+        w={collapsed ? 0 : "auto"}
+        overflow="hidden"
+        whiteSpace="nowrap"
+        transition="opacity 0.15s ease, width 0.2s ease"
+      >
+        {label}
+      </Text>
     </Flex>
   )
 }

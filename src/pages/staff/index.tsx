@@ -1,31 +1,9 @@
-import {
-  Avatar,
-  Badge,
-  Box,
-  Flex,
-  Heading,
-  Input,
-  Table,
-  Text,
-} from "@chakra-ui/react";
+import { Box, Flex, Heading, Input, Text } from "@chakra-ui/react";
 import { Search } from "lucide-react";
 import { useState } from "react";
-import { MOCK_USERS, MOCK_ROLES, MOCK_COMPANY_TREE, type User } from "@lib/mock/companies";
+import { MOCK_USERS, MOCK_COMPANY_TREE } from "@lib/mock/companies";
 import { useCompanyStore } from "@store/useCompanyStore";
-
-function getBranchName(branchId: string): string {
-  function find(nodes: typeof MOCK_COMPANY_TREE): string | null {
-    for (const node of nodes) {
-      if (node.id === branchId) return node.name;
-      if (node.children) {
-        const found = find(node.children);
-        if (found) return found;
-      }
-    }
-    return null;
-  }
-  return find(MOCK_COMPANY_TREE) ?? branchId;
-}
+import { StaffTable } from "./components/StaffTable";
 
 function getAllBranchIdsUnder(companyId: string): string[] {
   function findNode(nodes: typeof MOCK_COMPANY_TREE): (typeof MOCK_COMPANY_TREE)[0] | null {
@@ -52,65 +30,6 @@ function getAllBranchIdsUnder(companyId: string): string[] {
   if (!node) return [];
   if (node.type === "branch") return [node.id];
   return collectBranches(node.children ?? []);
-}
-
-const ROLE_COLOR: Record<string, string> = {
-  "role-admin": "purple",
-  "role-manager": "blue",
-  "role-cashier": "green",
-  "role-warehouse": "orange",
-};
-
-interface StaffTableProps {
-  users: User[];
-}
-
-function StaffTableRow({ user }: { user: User }) {
-  const role = MOCK_ROLES.find((r) => r.id === user.roleId) ?? MOCK_ROLES[0];
-  const branchName = getBranchName(user.branchId);
-
-  return (
-    <Table.Row>
-      <Table.Cell>
-        <Flex align="center" gap={3}>
-          <Avatar.Root size="sm" colorPalette="blue">
-            <Avatar.Fallback name={user.name} />
-          </Avatar.Root>
-          <Box>
-            <Text fontSize="sm" fontWeight="medium">{user.name}</Text>
-            <Text fontSize="xs" color="fg.muted">{user.email}</Text>
-          </Box>
-        </Flex>
-      </Table.Cell>
-      <Table.Cell>
-        <Badge size="sm" colorPalette={ROLE_COLOR[user.roleId] ?? "gray"}>
-          {role.name}
-        </Badge>
-      </Table.Cell>
-      <Table.Cell>
-        <Text fontSize="sm" color="fg.muted">{branchName}</Text>
-      </Table.Cell>
-    </Table.Row>
-  );
-}
-
-function StaffTable({ users }: StaffTableProps) {
-  return (
-    <Table.Root variant="outline" size="sm">
-      <Table.Header>
-        <Table.Row>
-          <Table.ColumnHeader>Nhân viên</Table.ColumnHeader>
-          <Table.ColumnHeader>Role</Table.ColumnHeader>
-          <Table.ColumnHeader>Chi nhánh</Table.ColumnHeader>
-        </Table.Row>
-      </Table.Header>
-      <Table.Body>
-        {users.map((user) => (
-          <StaffTableRow key={user.id} user={user} />
-        ))}
-      </Table.Body>
-    </Table.Root>
-  );
 }
 
 export function StaffPage() {
