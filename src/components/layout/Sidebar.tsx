@@ -33,9 +33,9 @@ export function Sidebar({
       direction="column"
       w={collapsed ? "60px" : "240px"}
       h="100vh"
-      bg="bg.panel"
+      bg="bg.surface"
       borderRightWidth="1px"
-      borderColor="border.subtle"
+      borderColor="border.muted"
       flexShrink={0}
       overflow="hidden"
       transition="width 0.2s ease"
@@ -48,7 +48,7 @@ export function Sidebar({
         px={4}
         h="72px"
         borderBottomWidth="1px"
-        borderColor="border.subtle"
+        borderColor="border.muted"
       >
         <Box
           w={7}

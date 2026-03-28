@@ -10,9 +10,9 @@ export function StoreRevenueList({ branches }: StoreRevenueListProps) {
   return (
     <Flex
       direction="column"
-      bg="bg.panel"
+      bg="bg.surface"
       borderWidth="1px"
-      borderColor="border.subtle"
+      borderColor="border.muted"
       borderRadius="xl"
       overflow="hidden"
     >

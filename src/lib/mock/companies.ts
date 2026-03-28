@@ -17,6 +17,10 @@ export type User = {
   id: string;
   name: string;
   email: string;
+  phone: string;
+  avatar: string | null;
+  joinDate: string;
+  isActive: boolean;
   role: string;
   roleId: string;
   branchId: string;
@@ -88,9 +92,27 @@ export const MOCK_ROLES: Role[] = [
 
 export const MOCK_USERS: User[] = [
   {
+    id: "user-admin",
+    name: "Trần Quốc Admin",
+    email: "admin@comforty.vn",
+    phone: "028 3812 0000",
+    avatar: null,
+    joinDate: "2021-01-01",
+    isActive: true,
+    role: "Admin",
+    roleId: "role-admin",
+    branchId: "branch-q1",
+    extraPermissionIds: [],
+    revokedPermissionIds: [],
+  },
+  {
     id: "user-1",
     name: "Nguyễn Văn An",
     email: "an.nguyen@comforty.vn",
+    phone: "028 3812 1001",
+    avatar: null,
+    joinDate: "2022-03-15",
+    isActive: true,
     role: "Quản lý",
     roleId: "role-manager",
     branchId: "branch-q1",
@@ -101,6 +123,10 @@ export const MOCK_USERS: User[] = [
     id: "user-2",
     name: "Trần Thị Bích",
     email: "bich.tran@comforty.vn",
+    phone: "028 3812 1002",
+    avatar: null,
+    joinDate: "2022-07-01",
+    isActive: true,
     role: "Thu ngân",
     roleId: "role-cashier",
     branchId: "branch-q1",
@@ -111,6 +137,10 @@ export const MOCK_USERS: User[] = [
     id: "user-3",
     name: "Lê Minh Cường",
     email: "cuong.le@comforty.vn",
+    phone: "028 3812 1003",
+    avatar: null,
+    joinDate: "2023-01-10",
+    isActive: false,
     role: "Thủ kho",
     roleId: "role-warehouse",
     branchId: "branch-q1",
@@ -121,6 +151,10 @@ export const MOCK_USERS: User[] = [
     id: "user-4",
     name: "Phạm Thị Dung",
     email: "dung.pham@comforty.vn",
+    phone: "028 3812 2001",
+    avatar: null,
+    joinDate: "2022-05-20",
+    isActive: true,
     role: "Quản lý",
     roleId: "role-manager",
     branchId: "branch-q3",
@@ -131,6 +165,10 @@ export const MOCK_USERS: User[] = [
     id: "user-5",
     name: "Hoàng Văn Em",
     email: "em.hoang@comforty.vn",
+    phone: "028 3812 2002",
+    avatar: null,
+    joinDate: "2023-04-01",
+    isActive: true,
     role: "Thu ngân",
     roleId: "role-cashier",
     branchId: "branch-q3",
@@ -141,6 +179,10 @@ export const MOCK_USERS: User[] = [
     id: "user-6",
     name: "Vũ Thị Fương",
     email: "fuong.vu@comforty.vn",
+    phone: "024 3812 3001",
+    avatar: null,
+    joinDate: "2022-09-15",
+    isActive: true,
     role: "Quản lý",
     roleId: "role-manager",
     branchId: "branch-hk",
@@ -151,6 +193,10 @@ export const MOCK_USERS: User[] = [
     id: "user-7",
     name: "Đặng Văn Giang",
     email: "giang.dang@comforty.vn",
+    phone: "024 3812 3002",
+    avatar: null,
+    joinDate: "2024-02-01",
+    isActive: true,
     role: "Thu ngân",
     roleId: "role-cashier",
     branchId: "branch-hk",

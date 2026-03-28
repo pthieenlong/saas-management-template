@@ -1,4 +1,4 @@
-import { defineConfig } from "vite";
+import { defineConfig } from "vitest/config";
 import react, { reactCompilerPreset } from "@vitejs/plugin-react";
 import babel from "@rolldown/plugin-babel";
 import { TanStackRouterVite } from "@tanstack/router-plugin/vite";
@@ -11,6 +11,16 @@ export default defineConfig({
     react(),
     babel({ presets: [reactCompilerPreset()] }),
   ],
+  test: {
+    environment: "jsdom",
+    globals: true,
+    setupFiles: ["./src/test/setup.ts"],
+    coverage: {
+      provider: "v8",
+      reporter: ["text", "html"],
+      exclude: ["node_modules/", "src/test/", "src/routeTree.gen.ts"],
+    },
+  },
   resolve: {
     tsconfigPaths: true,
     alias: {
@@ -26,6 +36,7 @@ export default defineConfig({
       "@store": path.resolve(__dirname, "./src/store"),
       "@services": path.resolve(__dirname, "./src/modules"),
       "@utils": path.resolve(__dirname, "./src/utils"),
+      "@": path.resolve(__dirname, "./src"),
     },
   },
 });

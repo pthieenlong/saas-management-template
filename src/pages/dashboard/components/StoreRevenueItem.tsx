@@ -23,8 +23,8 @@ export function StoreRevenueItem({
       py={3.5}
       gap={4}
       borderTopWidth={isFirst ? 0 : "1px"}
-      borderColor="border.subtle"
-      _hover={{ bg: "bg.subtle" }}
+      borderColor="border.muted"
+      _hover={{ bg: "bg.surface" }}
     >
       <Text flex={1} fontWeight="medium" fontSize="sm">
         {name}

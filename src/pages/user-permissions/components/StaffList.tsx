@@ -20,8 +20,8 @@ export function StaffList({ users, roles, userRoleMap, selectedUserId, onSelect 
   }
 
   return (
-    <Box bg="bg.panel" borderWidth="1px" borderColor="border.subtle" borderRadius="lg" overflow="hidden">
-      <Flex px={4} py={3} borderBottomWidth="1px" borderColor="border.subtle">
+    <Box bg="bg.surface" borderWidth="1px" borderColor="border.muted" borderRadius="lg" overflow="hidden">
+      <Flex px={4} py={3} borderBottomWidth="1px" borderColor="border.muted">
         <Text fontWeight="semibold" fontSize="sm">
           Nhân viên ({users.length})
         </Text>

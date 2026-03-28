@@ -1,11 +1,11 @@
-import { Avatar, Badge, Box, Flex, Table, Text } from "@chakra-ui/react";
+import { Avatar, Badge, Box, Circle, Flex, Table, Text } from "@chakra-ui/react";
 import { useNavigate } from "@tanstack/react-router";
 import type { User } from "@lib/mock/companies";
 import { MOCK_ROLES, MOCK_COMPANY_TREE } from "@lib/mock/companies";
 
 const ROLE_COLOR: Record<string, string> = {
-  "role-admin": "purple",
-  "role-manager": "blue",
+  "role-admin": "primary",
+  "role-manager": "accent",
   "role-cashier": "green",
   "role-warehouse": "orange",
 };
@@ -36,12 +36,12 @@ export function StaffTableItem({ user }: StaffTableItemProps) {
   return (
     <Table.Row
       cursor="pointer"
-      _hover={{ bg: "bg.subtle" }}
+      _hover={{ bg: "bg.surface" }}
       onClick={() => navigate({ to: "/staff/$staffId", params: { staffId: user.id } })}
     >
       <Table.Cell>
         <Flex align="center" gap={3}>
-          <Avatar.Root size="sm" colorPalette="blue">
+          <Avatar.Root size="sm" colorPalette="primary">
             <Avatar.Fallback name={user.name} />
           </Avatar.Root>
           <Box>
@@ -57,6 +57,14 @@ export function StaffTableItem({ user }: StaffTableItemProps) {
       </Table.Cell>
       <Table.Cell>
         <Text fontSize="sm" color="fg.muted">{branchName}</Text>
+      </Table.Cell>
+      <Table.Cell>
+        <Flex align="center" gap={2}>
+          <Circle size="8px" bg={user.isActive ? "green.500" : "gray.300"} />
+          <Text fontSize="xs" color={user.isActive ? "green.600" : "fg.muted"}>
+            {user.isActive ? "Đang hoạt động" : "Ngừng hoạt động"}
+          </Text>
+        </Flex>
       </Table.Cell>
     </Table.Row>
   );

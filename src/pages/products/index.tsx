@@ -1,6 +1,8 @@
 import { Box, Button, Flex, Heading, Text } from "@chakra-ui/react";
 import { Plus } from "lucide-react";
 import { useState } from "react";
+import { usePagination } from "@hooks/usePagination";
+import { TablePagination } from "@components/TablePagination";
 import {
   ProductFilterBar,
   type ProductFilters,
@@ -100,6 +102,8 @@ export function ProductsPage() {
     return true;
   });
 
+  const pagination = usePagination(filtered, 10);
+
   return (
     <Flex direction="column" gap={5}>
       <Flex align="center" justify="space-between">
@@ -109,7 +113,7 @@ export function ProductsPage() {
             Quản lý toàn bộ danh sách sản phẩm
           </Text>
         </Box>
-        <Button size="sm" colorPalette="blue">
+        <Button size="sm" colorPalette="primary">
           <Plus size={14} />
           Thêm sản phẩm
         </Button>
@@ -123,9 +127,9 @@ export function ProductsPage() {
         </Flex>
       ) : (
         <Box
-          bg="bg.panel"
+          bg="bg.surface"
           borderWidth="1px"
-          borderColor="border.subtle"
+          borderColor="border.muted"
           borderRadius="lg"
           overflow="hidden"
         >
@@ -133,7 +137,7 @@ export function ProductsPage() {
             px={4}
             py={3}
             borderBottomWidth="1px"
-            borderColor="border.subtle"
+            borderColor="border.muted"
             align="center"
             justify="space-between"
           >
@@ -141,7 +145,13 @@ export function ProductsPage() {
               {filtered.length} sản phẩm
             </Text>
           </Flex>
-          <ProductList products={filtered} />
+          <ProductList products={pagination.paginatedItems} />
+          <TablePagination
+            page={pagination.page}
+            totalCount={pagination.totalCount}
+            pageSize={pagination.pageSize}
+            onPageChange={pagination.setPage}
+          />
         </Box>
       )}
     </Flex>

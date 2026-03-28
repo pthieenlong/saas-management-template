@@ -18,9 +18,9 @@ export function StaffRoleSelect({
 }: StaffRoleSelectProps) {
   return (
     <Box
-      bg="bg.panel"
+      bg="bg.surface"
       borderWidth="1px"
-      borderColor="border.subtle"
+      borderColor="border.muted"
       borderRadius="lg"
       p={4}
     >

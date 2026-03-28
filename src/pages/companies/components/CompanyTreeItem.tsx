@@ -65,8 +65,8 @@ export function CompanyTreeItem({
         pl={`${12 + depth * 24}px`}
         borderRadius="md"
         bg={isSelected ? "colorPalette.subtle" : undefined}
-        colorPalette="blue"
-        _hover={{ bg: isSelected ? "colorPalette.subtle" : "bg.subtle" }}
+        colorPalette="primary"
+        _hover={{ bg: isSelected ? "colorPalette.subtle" : "bg.surface" }}
         role="group"
         cursor={onSelect ? "pointer" : "default"}
         onClick={() => onSelect?.(company)}
@@ -86,7 +86,7 @@ export function CompanyTreeItem({
         </Box>
 
         {/* Icon */}
-        <Box color={company.status === "active" ? "colorPalette.600" : "fg.muted"} colorPalette="blue">
+        <Box color={company.status === "active" ? "colorPalette.600" : "fg.muted"} colorPalette="primary">
           <Icon size={16} />
         </Box>
 
@@ -120,7 +120,7 @@ export function CompanyTreeItem({
                 aria-label="Thêm con"
                 variant="ghost"
                 size="xs"
-                colorPalette="blue"
+                colorPalette="primary"
                 onClick={(e) => { e.stopPropagation(); onAdd(company.id); }}
               >
                 <Plus size={13} />

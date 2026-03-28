@@ -11,6 +11,7 @@ import {
   Settings,
   Building2,
   ShieldCheck,
+  Tag,
 } from "lucide-react";
 import { useNavigate, useLocation } from "@tanstack/react-router";
 import { Sidebar, type NavItem } from "@components/layout/Sidebar";
@@ -21,6 +22,7 @@ const NAV_ITEMS: NavItem[] = [
   { icon: ShoppingCart, label: "Đơn hàng", id: "orders" },
   { icon: Package, label: "Sản phẩm", id: "products" },
   { icon: LayoutGrid, label: "Danh mục", id: "categories" },
+  { icon: Tag, label: "Tags", id: "tags" },
   { icon: Warehouse, label: "Tồn kho", id: "inventory" },
   { icon: Users, label: "Nhân viên", id: "staff" },
   { icon: BarChart2, label: "Báo cáo", id: "reports" },
@@ -34,6 +36,7 @@ const PAGE_TITLES: Record<string, string> = {
   orders: "Đơn hàng",
   products: "Sản phẩm",
   categories: "Danh mục",
+  tags: "Tags sản phẩm",
   inventory: "Tồn kho",
   staff: "Nhân viên",
   reports: "Báo cáo",
@@ -47,6 +50,7 @@ const ROUTE_MAP: Record<string, string> = {
   orders: "/orders",
   products: "/products",
   categories: "/categories",
+  tags: "/tags",
   inventory: "/inventory",
   staff: "/staff",
   reports: "/reports",

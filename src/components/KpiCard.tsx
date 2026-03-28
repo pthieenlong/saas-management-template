@@ -12,9 +12,9 @@ type KpiCardProps = {
 export function KpiCard({ label, value, sub, icon: Icon, color }: KpiCardProps) {
   return (
     <Flex
-      bg="bg.panel"
+      bg="bg.surface"
       borderWidth="1px"
-      borderColor="border.subtle"
+      borderColor="border.muted"
       borderRadius="xl"
       p={5}
       align="center"

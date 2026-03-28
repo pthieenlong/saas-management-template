@@ -16,11 +16,11 @@ export function UserItem({ user, isSelected, onSelect }: UserItemProps) {
       py={2.5}
       cursor="pointer"
       bg={isSelected ? "colorPalette.subtle" : "transparent"}
-      colorPalette="blue"
-      _hover={{ bg: isSelected ? "colorPalette.subtle" : "bg.subtle" }}
+      colorPalette="primary"
+      _hover={{ bg: isSelected ? "colorPalette.subtle" : "bg.surface" }}
       onClick={() => onSelect(user.id)}
     >
-      <Avatar.Root size="sm" colorPalette="blue">
+      <Avatar.Root size="sm" colorPalette="primary">
         <Avatar.Fallback name={user.name} />
       </Avatar.Root>
       <Box flex={1} minW={0}>

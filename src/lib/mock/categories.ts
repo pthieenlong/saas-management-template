@@ -1,0 +1,212 @@
+export type Category = {
+  id: string;
+  parentId: string | null;
+  name: string;
+  slug: string;
+  imageUrl: string | null;
+  sortOrder: number;
+  isActive: boolean;
+  createdAt: string;
+};
+
+export const MOCK_CATEGORIES: Category[] = [
+  // Cấp 1 — danh mục gốc
+  {
+    id: "cat-1",
+    parentId: null,
+    name: "Phòng ngủ",
+    slug: "phong-ngu",
+    imageUrl: "https://placehold.co/400x300/e2e8f0/64748b",
+    sortOrder: 1,
+    isActive: true,
+    createdAt: "2025-01-10T08:00:00Z",
+  },
+  {
+    id: "cat-2",
+    parentId: null,
+    name: "Phòng khách",
+    slug: "phong-khach",
+    imageUrl: "https://placehold.co/400x300/e2e8f0/64748b",
+    sortOrder: 2,
+    isActive: true,
+    createdAt: "2025-01-10T08:00:00Z",
+  },
+  {
+    id: "cat-3",
+    parentId: null,
+    name: "Phòng ăn",
+    slug: "phong-an",
+    imageUrl: "https://placehold.co/400x300/e2e8f0/64748b",
+    sortOrder: 3,
+    isActive: true,
+    createdAt: "2025-01-10T08:00:00Z",
+  },
+  {
+    id: "cat-4",
+    parentId: null,
+    name: "Phòng làm việc",
+    slug: "phong-lam-viec",
+    imageUrl: "https://placehold.co/400x300/e2e8f0/64748b",
+    sortOrder: 4,
+    isActive: true,
+    createdAt: "2025-01-10T08:00:00Z",
+  },
+  {
+    id: "cat-5",
+    parentId: null,
+    name: "Ngoài trời",
+    slug: "ngoai-troi",
+    imageUrl: "https://placehold.co/400x300/e2e8f0/64748b",
+    sortOrder: 5,
+    isActive: false,
+    createdAt: "2025-01-10T08:00:00Z",
+  },
+
+  // Cấp 2 — con của Phòng ngủ (cat-1)
+  {
+    id: "cat-1-1",
+    parentId: "cat-1",
+    name: "Giường ngủ",
+    slug: "giuong-ngu",
+    imageUrl: null,
+    sortOrder: 1,
+    isActive: true,
+    createdAt: "2025-01-15T08:00:00Z",
+  },
+  {
+    id: "cat-1-2",
+    parentId: "cat-1",
+    name: "Tủ quần áo",
+    slug: "tu-quan-ao",
+    imageUrl: null,
+    sortOrder: 2,
+    isActive: true,
+    createdAt: "2025-01-15T08:00:00Z",
+  },
+  {
+    id: "cat-1-3",
+    parentId: "cat-1",
+    name: "Bàn phấn",
+    slug: "ban-phan",
+    imageUrl: null,
+    sortOrder: 3,
+    isActive: true,
+    createdAt: "2025-01-15T08:00:00Z",
+  },
+  {
+    id: "cat-1-4",
+    parentId: "cat-1",
+    name: "Đầu giường",
+    slug: "dau-giuong",
+    imageUrl: null,
+    sortOrder: 4,
+    isActive: true,
+    createdAt: "2025-01-15T08:00:00Z",
+  },
+
+  // Cấp 2 — con của Phòng khách (cat-2)
+  {
+    id: "cat-2-1",
+    parentId: "cat-2",
+    name: "Sofa",
+    slug: "sofa",
+    imageUrl: null,
+    sortOrder: 1,
+    isActive: true,
+    createdAt: "2025-01-15T08:00:00Z",
+  },
+  {
+    id: "cat-2-2",
+    parentId: "cat-2",
+    name: "Bàn trà",
+    slug: "ban-tra",
+    imageUrl: null,
+    sortOrder: 2,
+    isActive: true,
+    createdAt: "2025-01-15T08:00:00Z",
+  },
+  {
+    id: "cat-2-3",
+    parentId: "cat-2",
+    name: "Kệ tivi",
+    slug: "ke-tivi",
+    imageUrl: null,
+    sortOrder: 3,
+    isActive: true,
+    createdAt: "2025-01-15T08:00:00Z",
+  },
+  {
+    id: "cat-2-4",
+    parentId: "cat-2",
+    name: "Tủ trang trí",
+    slug: "tu-trang-tri",
+    imageUrl: null,
+    sortOrder: 4,
+    isActive: false,
+    createdAt: "2025-01-15T08:00:00Z",
+  },
+
+  // Cấp 2 — con của Phòng ăn (cat-3)
+  {
+    id: "cat-3-1",
+    parentId: "cat-3",
+    name: "Bàn ăn",
+    slug: "ban-an",
+    imageUrl: null,
+    sortOrder: 1,
+    isActive: true,
+    createdAt: "2025-01-15T08:00:00Z",
+  },
+  {
+    id: "cat-3-2",
+    parentId: "cat-3",
+    name: "Ghế ăn",
+    slug: "ghe-an",
+    imageUrl: null,
+    sortOrder: 2,
+    isActive: true,
+    createdAt: "2025-01-15T08:00:00Z",
+  },
+  {
+    id: "cat-3-3",
+    parentId: "cat-3",
+    name: "Tủ bếp",
+    slug: "tu-bep",
+    imageUrl: null,
+    sortOrder: 3,
+    isActive: true,
+    createdAt: "2025-01-15T08:00:00Z",
+  },
+
+  // Cấp 2 — con của Phòng làm việc (cat-4)
+  {
+    id: "cat-4-1",
+    parentId: "cat-4",
+    name: "Bàn làm việc",
+    slug: "ban-lam-viec",
+    imageUrl: null,
+    sortOrder: 1,
+    isActive: true,
+    createdAt: "2025-01-15T08:00:00Z",
+  },
+  {
+    id: "cat-4-2",
+    parentId: "cat-4",
+    name: "Ghế văn phòng",
+    slug: "ghe-van-phong",
+    imageUrl: null,
+    sortOrder: 2,
+    isActive: true,
+    createdAt: "2025-01-15T08:00:00Z",
+  },
+  {
+    id: "cat-4-3",
+    parentId: "cat-4",
+    name: "Kệ sách",
+    slug: "ke-sach",
+    imageUrl: null,
+    sortOrder: 3,
+    isActive: true,
+    createdAt: "2025-01-15T08:00:00Z",
+  },
+];

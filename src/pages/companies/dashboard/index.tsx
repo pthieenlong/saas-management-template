@@ -151,9 +151,9 @@ export function CompanyDashboardPage() {
           <Flex
             direction="column"
             gap={3}
-            bg="bg.panel"
+            bg="bg.surface"
             borderWidth="1px"
-            borderColor="border.subtle"
+            borderColor="border.muted"
             borderRadius="xl"
             p={5}
           >
@@ -200,9 +200,9 @@ export function CompanyDashboardPage() {
           <Flex
             direction="column"
             gap={3}
-            bg="bg.panel"
+            bg="bg.surface"
             borderWidth="1px"
-            borderColor="border.subtle"
+            borderColor="border.muted"
             borderRadius="xl"
             p={5}
           >

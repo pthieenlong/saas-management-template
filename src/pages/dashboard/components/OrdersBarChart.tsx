@@ -27,7 +27,7 @@ export function OrdersBarChart({ data }: OrdersBarChartProps) {
         <Bar
           dataKey="orders"
           name="Đơn hàng"
-          fill="#3b82f6"
+          fill="#1a8c75"
           radius={[4, 4, 0, 0]}
         />
       </BarChart>

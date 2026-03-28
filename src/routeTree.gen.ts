@@ -10,24 +10,32 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as UserPermissionsRouteImport } from './routes/user-permissions'
+import { Route as TagsRouteImport } from './routes/tags'
 import { Route as SettingsRouteImport } from './routes/settings'
 import { Route as ReportsRouteImport } from './routes/reports'
 import { Route as ProductsRouteImport } from './routes/products'
 import { Route as OrdersRouteImport } from './routes/orders'
 import { Route as InventoryRouteImport } from './routes/inventory'
 import { Route as DashboardRouteImport } from './routes/dashboard'
-import { Route as CategoriesRouteImport } from './routes/categories'
 import { Route as StaffRouteRouteImport } from './routes/staff/route'
 import { Route as CompaniesRouteRouteImport } from './routes/companies/route'
+import { Route as CategoriesRouteRouteImport } from './routes/categories/route'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as StaffIndexRouteImport } from './routes/staff/index'
 import { Route as CompaniesIndexRouteImport } from './routes/companies/index'
+import { Route as CategoriesIndexRouteImport } from './routes/categories/index'
 import { Route as StaffStaffIdRouteImport } from './routes/staff/$staffId'
 import { Route as CompaniesDashboardRouteImport } from './routes/companies/dashboard'
+import { Route as CategoriesCategoryIdRouteImport } from './routes/categories/$categoryId'
 
 const UserPermissionsRoute = UserPermissionsRouteImport.update({
   id: '/user-permissions',
   path: '/user-permissions',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TagsRoute = TagsRouteImport.update({
+  id: '/tags',
+  path: '/tags',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SettingsRoute = SettingsRouteImport.update({
@@ -60,11 +68,6 @@ const DashboardRoute = DashboardRouteImport.update({
   path: '/dashboard',
   getParentRoute: () => rootRouteImport,
 } as any)
-const CategoriesRoute = CategoriesRouteImport.update({
-  id: '/categories',
-  path: '/categories',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const StaffRouteRoute = StaffRouteRouteImport.update({
   id: '/staff',
   path: '/staff',
@@ -73,6 +76,11 @@ const StaffRouteRoute = StaffRouteRouteImport.update({
 const CompaniesRouteRoute = CompaniesRouteRouteImport.update({
   id: '/companies',
   path: '/companies',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CategoriesRouteRoute = CategoriesRouteRouteImport.update({
+  id: '/categories',
+  path: '/categories',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -90,6 +98,11 @@ const CompaniesIndexRoute = CompaniesIndexRouteImport.update({
   path: '/',
   getParentRoute: () => CompaniesRouteRoute,
 } as any)
+const CategoriesIndexRoute = CategoriesIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => CategoriesRouteRoute,
+} as any)
 const StaffStaffIdRoute = StaffStaffIdRouteImport.update({
   id: '/$staffId',
   path: '/$staffId',
@@ -100,54 +113,67 @@ const CompaniesDashboardRoute = CompaniesDashboardRouteImport.update({
   path: '/dashboard',
   getParentRoute: () => CompaniesRouteRoute,
 } as any)
+const CategoriesCategoryIdRoute = CategoriesCategoryIdRouteImport.update({
+  id: '/$categoryId',
+  path: '/$categoryId',
+  getParentRoute: () => CategoriesRouteRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/categories': typeof CategoriesRouteRouteWithChildren
   '/companies': typeof CompaniesRouteRouteWithChildren
   '/staff': typeof StaffRouteRouteWithChildren
-  '/categories': typeof CategoriesRoute
   '/dashboard': typeof DashboardRoute
   '/inventory': typeof InventoryRoute
   '/orders': typeof OrdersRoute
   '/products': typeof ProductsRoute
   '/reports': typeof ReportsRoute
   '/settings': typeof SettingsRoute
+  '/tags': typeof TagsRoute
   '/user-permissions': typeof UserPermissionsRoute
+  '/categories/$categoryId': typeof CategoriesCategoryIdRoute
   '/companies/dashboard': typeof CompaniesDashboardRoute
   '/staff/$staffId': typeof StaffStaffIdRoute
+  '/categories/': typeof CategoriesIndexRoute
   '/companies/': typeof CompaniesIndexRoute
   '/staff/': typeof StaffIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/categories': typeof CategoriesRoute
   '/dashboard': typeof DashboardRoute
   '/inventory': typeof InventoryRoute
   '/orders': typeof OrdersRoute
   '/products': typeof ProductsRoute
   '/reports': typeof ReportsRoute
   '/settings': typeof SettingsRoute
+  '/tags': typeof TagsRoute
   '/user-permissions': typeof UserPermissionsRoute
+  '/categories/$categoryId': typeof CategoriesCategoryIdRoute
   '/companies/dashboard': typeof CompaniesDashboardRoute
   '/staff/$staffId': typeof StaffStaffIdRoute
+  '/categories': typeof CategoriesIndexRoute
   '/companies': typeof CompaniesIndexRoute
   '/staff': typeof StaffIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/categories': typeof CategoriesRouteRouteWithChildren
   '/companies': typeof CompaniesRouteRouteWithChildren
   '/staff': typeof StaffRouteRouteWithChildren
-  '/categories': typeof CategoriesRoute
   '/dashboard': typeof DashboardRoute
   '/inventory': typeof InventoryRoute
   '/orders': typeof OrdersRoute
   '/products': typeof ProductsRoute
   '/reports': typeof ReportsRoute
   '/settings': typeof SettingsRoute
+  '/tags': typeof TagsRoute
   '/user-permissions': typeof UserPermissionsRoute
+  '/categories/$categoryId': typeof CategoriesCategoryIdRoute
   '/companies/dashboard': typeof CompaniesDashboardRoute
   '/staff/$staffId': typeof StaffStaffIdRoute
+  '/categories/': typeof CategoriesIndexRoute
   '/companies/': typeof CompaniesIndexRoute
   '/staff/': typeof StaffIndexRoute
 }
@@ -155,65 +181,74 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/categories'
     | '/companies'
     | '/staff'
-    | '/categories'
     | '/dashboard'
     | '/inventory'
     | '/orders'
     | '/products'
     | '/reports'
     | '/settings'
+    | '/tags'
     | '/user-permissions'
+    | '/categories/$categoryId'
     | '/companies/dashboard'
     | '/staff/$staffId'
+    | '/categories/'
     | '/companies/'
     | '/staff/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
-    | '/categories'
     | '/dashboard'
     | '/inventory'
     | '/orders'
     | '/products'
     | '/reports'
     | '/settings'
+    | '/tags'
     | '/user-permissions'
+    | '/categories/$categoryId'
     | '/companies/dashboard'
     | '/staff/$staffId'
+    | '/categories'
     | '/companies'
     | '/staff'
   id:
     | '__root__'
     | '/'
+    | '/categories'
     | '/companies'
     | '/staff'
-    | '/categories'
     | '/dashboard'
     | '/inventory'
     | '/orders'
     | '/products'
     | '/reports'
     | '/settings'
+    | '/tags'
     | '/user-permissions'
+    | '/categories/$categoryId'
     | '/companies/dashboard'
     | '/staff/$staffId'
+    | '/categories/'
     | '/companies/'
     | '/staff/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  CategoriesRouteRoute: typeof CategoriesRouteRouteWithChildren
   CompaniesRouteRoute: typeof CompaniesRouteRouteWithChildren
   StaffRouteRoute: typeof StaffRouteRouteWithChildren
-  CategoriesRoute: typeof CategoriesRoute
   DashboardRoute: typeof DashboardRoute
   InventoryRoute: typeof InventoryRoute
   OrdersRoute: typeof OrdersRoute
   ProductsRoute: typeof ProductsRoute
   ReportsRoute: typeof ReportsRoute
   SettingsRoute: typeof SettingsRoute
+  TagsRoute: typeof TagsRoute
   UserPermissionsRoute: typeof UserPermissionsRoute
 }
 
@@ -224,6 +259,13 @@ declare module '@tanstack/react-router' {
       path: '/user-permissions'
       fullPath: '/user-permissions'
       preLoaderRoute: typeof UserPermissionsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tags': {
+      id: '/tags'
+      path: '/tags'
+      fullPath: '/tags'
+      preLoaderRoute: typeof TagsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/settings': {
@@ -268,13 +310,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DashboardRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/categories': {
-      id: '/categories'
-      path: '/categories'
-      fullPath: '/categories'
-      preLoaderRoute: typeof CategoriesRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/staff': {
       id: '/staff'
       path: '/staff'
@@ -287,6 +322,13 @@ declare module '@tanstack/react-router' {
       path: '/companies'
       fullPath: '/companies'
       preLoaderRoute: typeof CompaniesRouteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/categories': {
+      id: '/categories'
+      path: '/categories'
+      fullPath: '/categories'
+      preLoaderRoute: typeof CategoriesRouteRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -310,6 +352,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CompaniesIndexRouteImport
       parentRoute: typeof CompaniesRouteRoute
     }
+    '/categories/': {
+      id: '/categories/'
+      path: '/'
+      fullPath: '/categories/'
+      preLoaderRoute: typeof CategoriesIndexRouteImport
+      parentRoute: typeof CategoriesRouteRoute
+    }
     '/staff/$staffId': {
       id: '/staff/$staffId'
       path: '/$staffId'
@@ -324,8 +373,29 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CompaniesDashboardRouteImport
       parentRoute: typeof CompaniesRouteRoute
     }
+    '/categories/$categoryId': {
+      id: '/categories/$categoryId'
+      path: '/$categoryId'
+      fullPath: '/categories/$categoryId'
+      preLoaderRoute: typeof CategoriesCategoryIdRouteImport
+      parentRoute: typeof CategoriesRouteRoute
+    }
   }
 }
+
+interface CategoriesRouteRouteChildren {
+  CategoriesCategoryIdRoute: typeof CategoriesCategoryIdRoute
+  CategoriesIndexRoute: typeof CategoriesIndexRoute
+}
+
+const CategoriesRouteRouteChildren: CategoriesRouteRouteChildren = {
+  CategoriesCategoryIdRoute: CategoriesCategoryIdRoute,
+  CategoriesIndexRoute: CategoriesIndexRoute,
+}
+
+const CategoriesRouteRouteWithChildren = CategoriesRouteRoute._addFileChildren(
+  CategoriesRouteRouteChildren,
+)
 
 interface CompaniesRouteRouteChildren {
   CompaniesDashboardRoute: typeof CompaniesDashboardRoute
@@ -357,15 +427,16 @@ const StaffRouteRouteWithChildren = StaffRouteRoute._addFileChildren(
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  CategoriesRouteRoute: CategoriesRouteRouteWithChildren,
   CompaniesRouteRoute: CompaniesRouteRouteWithChildren,
   StaffRouteRoute: StaffRouteRouteWithChildren,
-  CategoriesRoute: CategoriesRoute,
   DashboardRoute: DashboardRoute,
   InventoryRoute: InventoryRoute,
   OrdersRoute: OrdersRoute,
   ProductsRoute: ProductsRoute,
   ReportsRoute: ReportsRoute,
   SettingsRoute: SettingsRoute,
+  TagsRoute: TagsRoute,
   UserPermissionsRoute: UserPermissionsRoute,
 }
 export const routeTree = rootRouteImport

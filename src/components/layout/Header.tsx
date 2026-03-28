@@ -25,9 +25,9 @@ export function Header({ title, breadcrumbs, onBack }: HeaderProps) {
       justify="space-between"
       px={6}
       h="72px"
-      bg="bg.panel"
+      bg="bg.surface"
       borderBottomWidth="1px"
-      borderColor="border.subtle"
+      borderColor="border.muted"
       flexShrink={0}
     >
       <Flex align="center" gap={3}>
@@ -73,7 +73,7 @@ export function Header({ title, breadcrumbs, onBack }: HeaderProps) {
               {title}
             </Text>
             {selectedCompany && (
-              <Badge colorPalette="blue" size="sm" variant="subtle">
+              <Badge colorPalette="primary" size="sm" variant="subtle">
                 {selectedCompany.name}
               </Badge>
             )}

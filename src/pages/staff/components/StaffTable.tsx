@@ -14,6 +14,7 @@ export function StaffTable({ users }: StaffTableProps) {
           <Table.ColumnHeader>Nhân viên</Table.ColumnHeader>
           <Table.ColumnHeader>Role</Table.ColumnHeader>
           <Table.ColumnHeader>Chi nhánh</Table.ColumnHeader>
+          <Table.ColumnHeader>Trạng thái</Table.ColumnHeader>
         </Table.Row>
       </Table.Header>
       <Table.Body>

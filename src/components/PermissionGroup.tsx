@@ -27,9 +27,9 @@ export function PermissionGroup({
 
   return (
     <Box
-      bg="bg.panel"
+      bg="bg.surface"
       borderWidth="1px"
-      borderColor="border.subtle"
+      borderColor="border.muted"
       borderRadius="lg"
       overflow="hidden"
     >
@@ -38,11 +38,11 @@ export function PermissionGroup({
         px={4}
         py={3}
         borderBottomWidth="1px"
-        borderColor="border.subtle"
+        borderColor="border.muted"
         align="center"
         gap={3}
         cursor="pointer"
-        _hover={{ bg: "bg.subtle" }}
+        _hover={{ bg: "bg.surface" }}
         onClick={() => onToggleGroup(permIds)}
       >
         <Text fontWeight="semibold" fontSize="sm" flex={1}>
@@ -53,7 +53,7 @@ export function PermissionGroup({
         </Text>
         <Switch.Root
           checked={allChecked}
-          colorPalette="blue"
+          colorPalette="primary"
           size="sm"
           onCheckedChange={() => onToggleGroup(permIds)}
           onClick={(e) => e.stopPropagation()}
@@ -76,7 +76,7 @@ export function PermissionGroup({
               px={4}
               py={2.5}
               cursor="pointer"
-              _hover={{ bg: "bg.subtle" }}
+              _hover={{ bg: "bg.surface" }}
               onClick={() => onToggle(perm.id)}
             >
               <Text fontSize="sm" flex={1}>
@@ -86,7 +86,7 @@ export function PermissionGroup({
                 {perm.id}
               </Text>
               {fromRole && (
-                <Badge size="sm" colorPalette="blue" variant="subtle">
+                <Badge size="sm" colorPalette="primary" variant="subtle">
                   Role
                 </Badge>
               )}
@@ -107,7 +107,7 @@ export function PermissionGroup({
               )}
               <Switch.Root
                 checked={hasPermission(perm.id)}
-                colorPalette="blue"
+                colorPalette="primary"
                 size="sm"
                 onCheckedChange={() => onToggle(perm.id)}
                 onClick={(e) => e.stopPropagation()}

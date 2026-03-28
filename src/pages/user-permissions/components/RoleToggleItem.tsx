@@ -2,8 +2,8 @@ import { Badge, Box, Flex, Text } from "@chakra-ui/react";
 import type { Role } from "@lib/mock/companies";
 
 const ROLE_COLOR: Record<string, string> = {
-  "role-admin": "purple",
-  "role-manager": "blue",
+  "role-admin": "primary",
+  "role-manager": "accent",
   "role-cashier": "green",
   "role-warehouse": "orange",
 };
@@ -32,7 +32,7 @@ export function RoleToggleItem({
       colorPalette={ROLE_COLOR[role.id] ?? "gray"}
       borderLeftWidth="3px"
       borderLeftColor={isSelected ? "colorPalette.500" : "transparent"}
-      _hover={{ bg: isSelected ? "colorPalette.subtle" : "bg.subtle" }}
+      _hover={{ bg: isSelected ? "colorPalette.subtle" : "bg.surface" }}
       transition="all 0.15s"
       onClick={() => onSelect(role.id)}
     >

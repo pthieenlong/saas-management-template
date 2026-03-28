@@ -17,13 +17,13 @@ export function RoleToggleList({
 }: RoleToggleListProps) {
   return (
     <Box
-      bg="bg.panel"
+      bg="bg.surface"
       borderWidth="1px"
-      borderColor="border.subtle"
+      borderColor="border.muted"
       borderRadius="lg"
       overflow="hidden"
     >
-      <Flex px={4} py={3} borderBottomWidth="1px" borderColor="border.subtle">
+      <Flex px={4} py={3} borderBottomWidth="1px" borderColor="border.muted">
         <Text fontWeight="semibold" fontSize="sm">
           Roles
         </Text>

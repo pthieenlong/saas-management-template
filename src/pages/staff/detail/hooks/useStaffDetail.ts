@@ -11,8 +11,11 @@ export function useStaffDetail(staffId: string) {
 
   const [name, setName] = useState(user?.name ?? "");
   const [email, setEmail] = useState(user?.email ?? "");
+  const [phone, setPhone] = useState(user?.phone ?? "");
+  const [avatar, setAvatar] = useState<string | null>(user?.avatar ?? null);
   const [branchId, setBranchId] = useState(user?.branchId ?? "");
-  const [isActive, setIsActive] = useState(true);
+  const [joinDate, setJoinDate] = useState(user?.joinDate ?? "");
+  const [isActive, setIsActive] = useState(user?.isActive ?? true);
   const [roleId, setRoleId] = useState(user?.roleId ?? "");
   const [extraPermissionIds, setExtraPermissionIds] = useState(user?.extraPermissionIds ?? []);
   const [revokedPermissionIds, setRevokedPermissionIds] = useState(user?.revokedPermissionIds ?? []);
@@ -63,7 +66,10 @@ export function useStaffDetail(staffId: string) {
     user,
     name, setName,
     email, setEmail,
+    phone, setPhone,
+    avatar, setAvatar,
     branchId, setBranchId,
+    joinDate, setJoinDate,
     isActive, setIsActive,
     roleId,
     role,

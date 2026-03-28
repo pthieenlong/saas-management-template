@@ -5,7 +5,7 @@
     "useDefineForClassFields": true,
     "lib": ["ES2023", "DOM", "DOM.Iterable"],
     "module": "ESNext",
-    "types": ["vite/client"],
+    "types": ["vite/client", "vitest/globals", "@testing-library/jest-dom"],
     "skipLibCheck": true,
 
     /* Bundler mode */
@@ -37,7 +37,8 @@
       "@routes/*": ["./src/routes/*"],
       "@store/*": ["./src/store/*"],
       "@services/*": ["./src/modules/*"],
-      "@utils/*": ["./src/utils/*"]
+      "@utils/*": ["./src/utils/*"],
+      "@/*": ["./src/*"]
     }
   },
   "include": ["src"]

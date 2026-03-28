@@ -11,7 +11,7 @@ import {
 import { formatRevenue } from "@utils/format";
 import type { Company } from "@features/company";
 
-const STORE_COLORS = ["#3b82f6", "#10b981", "#f59e0b", "#8b5cf6"];
+const STORE_COLORS = ["#1a8c75", "#3da38c", "#e89c2f", "#66baa8"];
 
 type RevenueCompareRow = Record<string, string | number>;
 

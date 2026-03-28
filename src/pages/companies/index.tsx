@@ -70,7 +70,7 @@ export function CompaniesPage() {
         </Button>
       </Flex>
 
-      <Box bg="bg.panel" borderWidth="1px" borderColor="border.subtle" borderRadius="lg" py={2}>
+      <Box bg="bg.surface" borderWidth="1px" borderColor="border.muted" borderRadius="lg" py={2}>
         <CompanyTree
           companies={companies}
           onSelect={handleSelect}

@@ -22,7 +22,7 @@ export function SidebarItem({ icon: Icon, label, isActive, collapsed, onClick }:
       colorPalette="primary"
       bg={isActive ? "colorPalette.subtle" : "transparent"}
       color={isActive ? "colorPalette.fg" : "fg.muted"}
-      _hover={{ bg: "bg.subtle", color: "fg" }}
+      _hover={{ bg: "bg.surface", color: "fg" }}
       transition="background 0.15s, color 0.15s"
       onClick={onClick}
       title={collapsed ? label : undefined}

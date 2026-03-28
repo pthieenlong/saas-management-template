@@ -11,9 +11,9 @@ export function ChartPanel({ title, children }: ChartPanelProps) {
     <Flex
       direction="column"
       gap={3}
-      bg="bg.panel"
+      bg="bg.surface"
       borderWidth="1px"
-      borderColor="border.subtle"
+      borderColor="border.muted"
       borderRadius="xl"
       p={5}
     >
